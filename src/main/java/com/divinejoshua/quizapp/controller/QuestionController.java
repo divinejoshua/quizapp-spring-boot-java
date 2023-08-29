@@ -1,4 +1,4 @@
-package com.divinejoshua.quizapp;
+package com.divinejoshua.quizapp.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
