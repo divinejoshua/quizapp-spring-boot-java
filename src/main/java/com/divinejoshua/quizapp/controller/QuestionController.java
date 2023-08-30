@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("question")  //Parent routing
 public class QuestionController {
 
+//    The question service
+    QuestionService questionService;
+
     //Get all questions
     @GetMapping("allquestions")
     public String getAllQuestions(){
-        return "These are all the questions.";
+
+        return questionService.getAllQuestions;
     }
 }
