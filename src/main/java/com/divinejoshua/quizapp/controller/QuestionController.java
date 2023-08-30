@@ -1,10 +1,11 @@
 package com.divinejoshua.quizapp.controller;
-
-
+import com.divinejoshua.quizapp.model.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("question")  //Parent routing
@@ -16,7 +17,7 @@ public class QuestionController {
 
     //Get all questions
     @GetMapping("allquestions")
-    public String getAllQuestions(){
+    public List<QuestionModel> getAllQuestions(){
 
         return questionService.getAllQuestions;
     }

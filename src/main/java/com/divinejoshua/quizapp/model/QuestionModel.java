@@ -6,13 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+//    NOTE:
+//    Use camel casing for variable naming in Models and
+//    it will auto convert to snake casing on the postgresql db
+
 
 @Data
 @Entity
 public class QuestionModel {
-//    NOTE:
-//    Use camel casing for variable naming in Models and
-//    it will auto convert to snake casing on the postgresql db
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
