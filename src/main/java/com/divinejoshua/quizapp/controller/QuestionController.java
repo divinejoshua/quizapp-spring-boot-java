@@ -12,13 +12,13 @@ import java.util.List;
 public class QuestionController {
 
 //    The question service
-    @Autowired //Auto wired is so I dont need to use the 'New' keyword
+    @Autowired      //Auto wired is so I dont need to use the 'New' keyword
     QuestionService questionService;
+
 
     //Get all questions
     @GetMapping("allquestions")
     public List<QuestionModel> getAllQuestions(){
-
         return questionService.getAllQuestions;
     }
 }
