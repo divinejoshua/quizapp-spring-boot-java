@@ -1,9 +1,20 @@
 package com.divinejoshua.quizapp.service;
 
+import com.divinejoshua.quizapp.dao.QuestionDao;
 import com.divinejoshua.quizapp.model.QuestionModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class QuestionService {
-    public List<QuestionModel> getAllQuestions;
+
+//    Question Data Access Object
+    @Autowired
+    QuestionDao questionDao;
+
+    public List<QuestionModel> getAllQuestions(){
+        return questionDao.findAll();
+    }
 }
