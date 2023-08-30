@@ -14,6 +14,8 @@ public class QuestionService {
     @Autowired
     QuestionDao questionDao;
 
+
+//    Get all questions
     public List<QuestionModel> getAllQuestions(){
         return questionDao.findAll();
     }
