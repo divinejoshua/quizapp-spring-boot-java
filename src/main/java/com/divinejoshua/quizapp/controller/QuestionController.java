@@ -3,8 +3,8 @@ import com.divinejoshua.quizapp.model.QuestionModel;
 import com.divinejoshua.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("question")  //Parent routing
@@ -28,7 +28,7 @@ public class QuestionController {
     }
 
     @PostMapping("add")
-    public QuestionModel addQuestions(@RequestBody QuestionModel question){
+    public QuestionModel addQuestions( @RequestBody QuestionModel question){
         return questionService.addQuestion(question);
 //        return "Added successfully";
     }
