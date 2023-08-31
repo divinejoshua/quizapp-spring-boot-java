@@ -24,9 +24,9 @@ public class QuestionController {
     }
 
 
-    //Get Question by Id
-    @GetMapping("question/{id}")
-    public String getQuestionById(@PathVariable Integer id){
-        return "Question by ID";
+    //Get Question by Category
+    @GetMapping("category/{category}")
+    public String getQuestionById(@PathVariable Integer category){
+        return "Question by category";
     }
 }
