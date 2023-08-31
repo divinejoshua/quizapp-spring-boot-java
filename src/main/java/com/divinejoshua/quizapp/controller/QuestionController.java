@@ -2,10 +2,7 @@ package com.divinejoshua.quizapp.controller;
 import com.divinejoshua.quizapp.model.QuestionModel;
 import com.divinejoshua.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,13 @@ public class QuestionController {
 
     //Get Question by Category
     @GetMapping("category/{category}")
-    public String getQuestionById(@PathVariable Integer category){
-        return "Question by category";
+    public List<QuestionModel> getQuestionById(@PathVariable String category){
+        return questionService.getQuestionsByCategory(category);
+    }
+
+    @PostMapping("add")
+    public QuestionModel addQuestions(@RequestBody QuestionModel question){
+        return questionService.addQuestion(question);
+//        return "Added successfully";
     }
 }
