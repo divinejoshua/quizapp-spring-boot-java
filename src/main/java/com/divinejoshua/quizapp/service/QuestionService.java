@@ -29,7 +29,7 @@ public class QuestionService {
 
 //    Add new question and save
     public QuestionModel addQuestion(QuestionModel question) {
-        questionDao.save(question);
+//        questionDao.save(question);
         return question;
     }
 }

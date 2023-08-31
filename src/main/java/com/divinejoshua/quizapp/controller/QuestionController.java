@@ -1,6 +1,7 @@
 package com.divinejoshua.quizapp.controller;
 import com.divinejoshua.quizapp.model.QuestionModel;
 import com.divinejoshua.quizapp.service.QuestionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -28,7 +29,7 @@ public class QuestionController {
     }
 
     @PostMapping("add")
-    public QuestionModel addQuestions( @RequestBody QuestionModel question){
+    public QuestionModel addQuestions(@Valid @RequestBody QuestionModel question){
         return questionService.addQuestion(question);
 //        return "Added successfully";
     }
