@@ -56,6 +56,8 @@ QuestionRepository questionRepository;
 
         Integer id;
         QuestionModel questionInstance;
+        HashMap<String, String> context = new HashMap<String, String>(); //Context response
+
 
         try {
             id = question.getId(); //Get the id of the question
@@ -63,7 +65,6 @@ QuestionRepository questionRepository;
 
         }
         catch (Exception error){
-            HashMap<String, String> context = new HashMap<String, String>(); //Context response
             context.put("message", "Invalid Id"); //Success message
 
             return new ResponseEntity<>(context, HttpStatus.BAD_REQUEST);
@@ -81,10 +82,9 @@ QuestionRepository questionRepository;
         questionInstance.setDifficultylevel(question.getDifficultylevel());
 
         questionRepository.save(questionInstance);
+        context.put("message", "success"); //Success message
 
-        System.out.println(questionInstance);
-
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(context, HttpStatus.OK);
 
 
     }
