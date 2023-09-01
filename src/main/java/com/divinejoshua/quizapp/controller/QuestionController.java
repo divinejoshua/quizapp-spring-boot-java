@@ -45,7 +45,13 @@ public class QuestionController {
     //Get Question by Category
     //NOTE, when updating the question, the Id must be passed with the question in the body request
     @PutMapping("update")
-    public ResponseEntity<QuestionModel> UpdateQuestion(@Valid @RequestBody QuestionModel question){
+    public ResponseEntity<QuestionModel> updateQuestion(@Valid @RequestBody QuestionModel question){
         return questionService.UpdateQuestion(question);
+    }
+    //Get Question by Category
+    //NOTE, when updating the question, the Id must be passed with the question in the body request
+    @PutMapping("delete/{id}")
+    public ResponseEntity<> deleteQuestion(@PathVariable Integer id){
+        return questionService.deleteQuestion(question);
     }
 }
