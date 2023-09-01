@@ -41,4 +41,15 @@ public class QuestionController {
 
         return ResponseEntity.ok(context);
     }
+
+    //Get Question by Category
+    @PutMapping("update/{id}")
+    public ResponseEntity<HashMap<String, String>> UpdateQuestion(@PathVariable QuestionModel question){
+        HashMap<String, String> context = new HashMap<String, String>(); //Context response
+
+        questionService.UpdateQuestion(question);
+        context.put("message", "success"); //Success message
+
+        return ResponseEntity.ok(context);
+    }
 }

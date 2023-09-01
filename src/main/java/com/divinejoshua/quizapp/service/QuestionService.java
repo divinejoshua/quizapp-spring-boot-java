@@ -49,4 +49,9 @@ QuestionRepository questionRepository;
 //        questionRepository.save(question);
         return question;
     }
+
+//    Update Question
+    public QuestionModel UpdateQuestion(QuestionModel question) {
+        return question;
+    }
 }
