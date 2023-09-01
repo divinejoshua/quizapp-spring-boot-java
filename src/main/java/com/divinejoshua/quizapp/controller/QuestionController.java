@@ -3,8 +3,12 @@ import com.divinejoshua.quizapp.model.QuestionModel;
 import com.divinejoshua.quizapp.service.QuestionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -29,8 +33,13 @@ public class QuestionController {
     }
 
     @PostMapping("add")
-    public QuestionModel addQuestions(@Valid @RequestBody QuestionModel question){
-        return questionService.addQuestion(question);
-//        return "Added successfully";
+    public ResponseEntity<HashMap> addQuestions(@Valid @RequestBody QuestionModel question){
+        HashMap<String, String> context = new HashMap<String, String>(); //Context response
+
+        questionService.addQuestion(question); // Add question service
+        context.put("message", "success"); //Success message
+
+
+        return ResponseEntity.ok(context);
     }
 }
