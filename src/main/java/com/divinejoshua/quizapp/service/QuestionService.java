@@ -46,7 +46,7 @@ QuestionRepository questionRepository;
 
 //Add new question and save
     public QuestionModel addQuestion(QuestionModel question) {
-//        questionRepository.save(question);
+        questionRepository.save(question);
         return question;
     }
 
@@ -93,6 +93,7 @@ QuestionRepository questionRepository;
         HashMap<String, String> context = new HashMap<String, String>(); //Context response
 
         try{
+            questionRepository.findById(id).orElseThrow(() -> new Exception("Question not found with ID" )); //Get the id ot throw error
             questionRepository.deleteById(id); //Delete the Question
             context.put("message", "success"); //Success message
         }
