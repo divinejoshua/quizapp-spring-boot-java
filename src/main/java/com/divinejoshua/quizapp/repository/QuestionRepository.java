@@ -12,5 +12,4 @@ import java.util.Optional;
 public interface QuestionRepository extends JpaRepository<QuestionModel, Integer> {
 
     List<QuestionModel> findByCategory(String category);
-//    QuestionModel findByQuestionId(Integer id);
 }

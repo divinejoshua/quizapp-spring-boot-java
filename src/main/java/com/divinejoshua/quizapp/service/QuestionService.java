@@ -88,4 +88,10 @@ QuestionRepository questionRepository;
 
 
     }
+
+    public ResponseEntity deleteQuestion(Integer id) {
+        HashMap<String, String> context = new HashMap<String, String>(); //Context response
+
+        return  new ResponseEntity<>(context, HttpStatus.OK);
+    }
 }
