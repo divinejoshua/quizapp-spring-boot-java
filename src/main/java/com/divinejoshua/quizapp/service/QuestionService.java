@@ -3,10 +3,12 @@ package com.divinejoshua.quizapp.service;
 import com.divinejoshua.quizapp.repository.QuestionRepository;
 import com.divinejoshua.quizapp.model.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -20,7 +22,7 @@ QuestionRepository questionRepository;
 //    Get all questions
     public ResponseEntity<List<QuestionModel>> getAllQuestions(){
         try {
-            return new ResponseEntity<>(questionRepository.findAll(), HttpStatus.OK);
+            return new ResponseEntity<>(questionRepository.findAll(Sort.by(Sort.Direction.ASC, "id")), HttpStatus.OK);
         }
         catch (Exception error){
             //Error handler
@@ -50,7 +52,7 @@ QuestionRepository questionRepository;
 
 
 //    Update Question
-    public ResponseEntity<QuestionModel> UpdateQuestion(QuestionModel question) {
+    public ResponseEntity UpdateQuestion(QuestionModel question) {
 
         Integer id;
         QuestionModel questionInstance;
@@ -61,7 +63,10 @@ QuestionRepository questionRepository;
 
         }
         catch (Exception error){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            HashMap<String, String> context = new HashMap<String, String>(); //Context response
+            context.put("message", "Invalid Id"); //Success message
+
+            return new ResponseEntity<>(context, HttpStatus.BAD_REQUEST);
         }
 
 
@@ -74,6 +79,8 @@ QuestionRepository questionRepository;
         questionInstance.setRightAnswer(question.getRightAnswer());
         questionInstance.setCategory(question.getCategory());
         questionInstance.setDifficultylevel(question.getDifficultylevel());
+
+        questionRepository.save(questionInstance);
 
         System.out.println(questionInstance);
 
