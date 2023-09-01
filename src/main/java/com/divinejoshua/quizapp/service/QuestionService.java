@@ -65,8 +65,7 @@ QuestionRepository questionRepository;
 
         }
         catch (Exception error){
-            context.put("message", "Invalid Id"); //Success message
-
+            context.put("message", "Invalid Id"); //Error message
             return new ResponseEntity<>(context, HttpStatus.BAD_REQUEST);
         }
 
@@ -89,9 +88,18 @@ QuestionRepository questionRepository;
 
     }
 
+//    Delete Question
     public ResponseEntity deleteQuestion(Integer id) {
         HashMap<String, String> context = new HashMap<String, String>(); //Context response
 
+        try{
+            questionRepository.deleteById(id); //Delete the Question
+            context.put("message", "success"); //Success message
+        }
+        catch (Exception error){
+            context.put("message", "Invalid Id"); //Error message
+            return new ResponseEntity<>(context, HttpStatus.BAD_REQUEST);
+        }
         return  new ResponseEntity<>(context, HttpStatus.OK);
     }
 }
