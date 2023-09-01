@@ -45,12 +45,7 @@ public class QuestionController {
     //Get Question by Category
     //NOTE, when updating the question, the Id must be passed with the question in the body request
     @PutMapping("update")
-    public ResponseEntity<HashMap<String, String>> UpdateQuestion(@Valid @RequestBody QuestionModel question){
-        HashMap<String, String> context = new HashMap<String, String>(); //Context response
-
-        questionService.UpdateQuestion(question);
-        context.put("message", "success"); //Success message
-
-        return ResponseEntity.ok(context);
+    public ResponseEntity<QuestionModel> UpdateQuestion(@Valid @RequestBody QuestionModel question){
+        return questionService.UpdateQuestion(question);
     }
 }

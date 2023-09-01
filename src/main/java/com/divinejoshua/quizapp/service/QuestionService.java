@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class QuestionService {
@@ -54,39 +53,31 @@ QuestionRepository questionRepository;
     public ResponseEntity<QuestionModel> UpdateQuestion(QuestionModel question) {
 
         Integer id;
+        QuestionModel questionInstance;
 
         try {
             id = question.getId(); //Get the id of the question
-//            if(id==null){
-//                throw new Exception("Id is null");
-//            }
-
-            QuestionModel questionInstance = questionRepository.findById(id).get();
-
-            if(questionInstance.getId() >0){
-                System.out.println("Instance "+questionInstance.getId());
-            } else {
-                throw new Exception("Id is null");
-            }
-
-
-
-//        Set the new updates
-            questionInstance.setQuestionTitle(question.getQuestionTitle());
-            questionInstance.setOption1(question.getOption1());
-            questionInstance.setOption2(question.getOption2());
-            questionInstance.setOption3(question.getOption3());
-            questionInstance.setRightAnswer(question.getRightAnswer());
-            questionInstance.setCategory(question.getCategory());
-            questionInstance.setDifficultylevel(question.getDifficultylevel());
-
-            //        questionRepository.
-            return new ResponseEntity<>(HttpStatus.OK);
+            questionInstance = questionRepository.findById(id).orElseThrow(() -> new Exception("Question not found with ID" ));
 
         }
         catch (Exception error){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+
+
+        // Set the new updates
+        questionInstance.setQuestionTitle(question.getQuestionTitle());
+        questionInstance.setOption1(question.getOption1());
+        questionInstance.setOption2(question.getOption2());
+        questionInstance.setOption3(question.getOption3());
+        questionInstance.setRightAnswer(question.getRightAnswer());
+        questionInstance.setCategory(question.getCategory());
+        questionInstance.setDifficultylevel(question.getDifficultylevel());
+
+        System.out.println(questionInstance);
+
+        return new ResponseEntity<>(HttpStatus.OK);
 
 
     }
