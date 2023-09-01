@@ -3,6 +3,8 @@ package com.divinejoshua.quizapp.service;
 import com.divinejoshua.quizapp.repository.QuestionRepository;
 import com.divinejoshua.quizapp.model.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,8 @@ QuestionRepository questionRepository;
 
 
 //    Get all questions
-    public List<QuestionModel> getAllQuestions(){
-        return questionRepository.findAll();
+    public ResponseEntity<List<QuestionModel>> getAllQuestions(){
+        return new ResponseEntity<>(questionRepository.findAll(), HttpStatus.OK);
     }
 
 

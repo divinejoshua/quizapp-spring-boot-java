@@ -21,7 +21,7 @@ public class QuestionController {
 
     //Get all questions
     @GetMapping("allquestions")
-    public List<QuestionModel> getAllQuestions(){
+    public ResponseEntity<List<QuestionModel>> getAllQuestions(){
         return questionService.getAllQuestions();
     }
 
@@ -33,7 +33,7 @@ public class QuestionController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<HashMap> addQuestions(@Valid @RequestBody QuestionModel question){
+    public ResponseEntity<HashMap<String, String>> addQuestions(@Valid @RequestBody QuestionModel question){
         HashMap<String, String> context = new HashMap<String, String>(); //Context response
 
         questionService.addQuestion(question); // Add question service
