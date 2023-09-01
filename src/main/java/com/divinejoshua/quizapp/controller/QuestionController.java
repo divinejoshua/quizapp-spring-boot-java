@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -16,7 +15,7 @@ import java.util.Map;
 public class QuestionController {
 
     //    The question service
-    @Autowired      //Auto wired is so I dont need to use the 'New' keyword
+    @Autowired      //Auto wired: I don't need to use the 'New' keyword
     QuestionService questionService;
 
     //Get all questions

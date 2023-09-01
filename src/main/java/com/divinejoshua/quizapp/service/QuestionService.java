@@ -19,7 +19,14 @@ QuestionRepository questionRepository;
 
 //    Get all questions
     public ResponseEntity<List<QuestionModel>> getAllQuestions(){
-        return new ResponseEntity<>(questionRepository.findAll(), HttpStatus.OK);
+
+        try {
+            return new ResponseEntity<>(questionRepository.findAll(), HttpStatus.OK);
+        }
+        catch (Exception error){
+            //Error handler
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 
