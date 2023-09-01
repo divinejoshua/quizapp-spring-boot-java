@@ -20,6 +20,7 @@ QuestionRepository questionRepository;
 //    Get all questions
     public ResponseEntity<List<QuestionModel>> getAllQuestions(){
 
+//        Exception handler
         try {
             return new ResponseEntity<>(questionRepository.findAll(), HttpStatus.OK);
         }
@@ -31,8 +32,16 @@ QuestionRepository questionRepository;
 
 
 //    Get questions by category
-    public List<QuestionModel> getQuestionsByCategory(String category) {
-        return questionRepository.findByCategory(category);
+    public ResponseEntity<List<QuestionModel>> getQuestionsByCategory(String category) {
+
+//        Exception handler
+        try {
+            return new ResponseEntity<>(questionRepository.findByCategory(category), HttpStatus.OK);
+        }
+        catch (Exception error){
+            //Error handler
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 //    Add new question and save
