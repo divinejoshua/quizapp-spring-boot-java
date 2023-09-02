@@ -91,7 +91,6 @@ QuestionRepository questionRepository;
 //    Delete Question
     public ResponseEntity deleteQuestion(Integer id) {
         HashMap<String, String> context = new HashMap<String, String>(); //Context response
-
         try{
             questionRepository.findById(id).orElseThrow(() -> new Exception("Question not found with ID" )); //Get the id ot throw error
             questionRepository.deleteById(id); //Delete the Question
